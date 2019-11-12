@@ -52,8 +52,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS contact");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS telepon");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
         onCreate(sqLiteDatabase);
     }
 }
