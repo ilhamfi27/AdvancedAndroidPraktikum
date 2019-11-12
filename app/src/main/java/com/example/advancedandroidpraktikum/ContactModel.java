@@ -11,8 +11,7 @@ public class ContactModel {
         this.namaBelakang = namaBelakang;
     }
 
-    public ContactModel() {
-    }
+    public ContactModel() {    }
 
     public int getId() {
         return id;

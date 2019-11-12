@@ -14,6 +14,8 @@ public class TeleponModel {
         this.jenisContact = jenisContact;
     }
 
+    public TeleponModel() {    }
+
     public int getId() {
         return id;
     }

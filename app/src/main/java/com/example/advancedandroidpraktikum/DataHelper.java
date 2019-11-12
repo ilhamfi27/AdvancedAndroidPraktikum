@@ -40,16 +40,14 @@ public class DataHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(queryTabelContact);
         sqLiteDatabase.execSQL(queryTabelTelepon);
 
-        String queryInsert = "";
-
-        queryInsert = "INSERT INTO contact (id, nama_depan, nama_belakang) VALUES (1, 'Wahid', 'Waluyo');";
-        sqLiteDatabase.execSQL(queryInsert);
-        queryInsert = "INSERT INTO contact (id, nama_depan, nama_belakang) VALUES (2, 'Bambang', 'Surapto');";
-        sqLiteDatabase.execSQL(queryInsert);
-        queryInsert = "INSERT INTO telepon (id, id_contact, nomor, jenis_contact) VALUES (1, 1, '089897683', 'Pribadi');";
-        sqLiteDatabase.execSQL(queryInsert);
-        queryInsert = "INSERT INTO telepon (id, id_contact, nomor, jenis_contact) VALUES (2, 2, '082113123', 'Kantor');";
-        sqLiteDatabase.execSQL(queryInsert);
+        String queryInsert1 = "INSERT INTO contact (id, nama_depan, nama_belakang) VALUES (1, 'Wahid', 'Waluyo');";
+        sqLiteDatabase.execSQL(queryInsert1);
+        String queryInsert2 = "INSERT INTO contact (id, nama_depan, nama_belakang) VALUES (2, 'Bambang', 'Surapto');";
+        sqLiteDatabase.execSQL(queryInsert2);
+        String queryInsert3 = "INSERT INTO telepon (id, id_contact, nomor, jenis_contact) VALUES (1, 1, '089897683', 'Pribadi');";
+        sqLiteDatabase.execSQL(queryInsert3);
+        String queryInsert4 = "INSERT INTO telepon (id, id_contact, nomor, jenis_contact) VALUES (2, 2, '082113123', 'Kantor');";
+        sqLiteDatabase.execSQL(queryInsert4);
     }
 
     @Override
@@ -57,20 +55,5 @@ public class DataHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS contact");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS telepon");
         onCreate(sqLiteDatabase);
-    }
-
-    public ArrayList<ContactModel> getAllData(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String querySelect = "Select * FROM contact";
-        ContactModel cm = new ContactModel();
-        ArrayList<ContactModel> arrCon = new ArrayList<ContactModel>();
-        Cursor cursor = db.rawQuery(querySelect, null);
-        while (cursor.moveToNext()){
-            cm.setId(Integer.parseInt(cursor.getString(0)));
-            cm.setNamaDepan(cursor.getString(1));
-            cm.setNamaBelakang(cursor.getString(2));
-            arrCon.add(cm);
-        }
-        return arrCon;
     }
 }
